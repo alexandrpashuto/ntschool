@@ -18,10 +18,13 @@ class PostsAction
 {
     /** @var \Illuminate\View\Factory */
     protected $renderer;
+    /** @var \Apix\Log\Logger\File */
+    protected $logger;
 
-    public function __construct($view)
+    public function __construct($view,$logger)
     {
         $this->renderer = $view;
+        $this->logger = $logger;
     }
 
     public function __invoke(ServerRequestInterface $request)
@@ -36,6 +39,8 @@ class PostsAction
             $postPerPage,
             $page
         );
+
+        $this->logger->warning('Some warning');
         return $this->renderer->make('posts',[
             'posts'=>$posts,
             'total'=>$total
