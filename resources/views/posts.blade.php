@@ -15,7 +15,7 @@
 
                                     <div class="col-md-5">
                                         <div class="item-media entry-thumbnail">
-                                            <img src="images/events/05.jpg" alt="">
+                                            <img src="/images/events/05.jpg" alt="">
                                         </div>
                                     </div>
 
@@ -66,7 +66,7 @@
                                     <li>
                                         <a href="?page={{ $posts->currentPage()-1 }}">
                                             <span class=" sr-only">Prev</span>
-                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
                                         </a>
                                     </li>
                                 @endif
@@ -100,6 +100,18 @@
                     <div class="widget widget_apsc_widget">
                         <h3 class="widget-title poppins">Get In Touch</h3>
                         <div class="apsc-icons-wrapper clearfix apsc-theme-4">
+
+                            @foreach($categories as $category)
+                                <div class="apsc-each-profile">
+                                    <a class="apsc-facebook-icon clearfix" href="/posts/{{ $category['key'] }}">
+                                        <div class="apsc-inner-block">
+												<span class="social-icon">
+													<span class="media-name">{{ $category['title'] }}</span>
+												</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                             <div class="apsc-each-profile">
                                 <a class="apsc-facebook-icon clearfix" href="#">
                                     <div class="apsc-inner-block">
@@ -112,6 +124,7 @@
                                     </div>
                                 </a>
                             </div>
+
                             <div class="apsc-each-profile">
                                 <a class="apsc-twitter-icon clearfix" href="#">
                                     <div class="apsc-inner-block">
